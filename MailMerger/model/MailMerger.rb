@@ -8,7 +8,11 @@ class MailMerger
     template.gsub(/<nombre_evento>/, nombre_evento)
   end
   
-  def reemplazar_lugar_evento(template, lugar_evento)
-  	template.gsub(/<lugar_del_evento>/, lugar_evento)
+  def reemplazar_lugar_evento(template, lugar_del_evento)
+  	template.gsub(/<lugar_del_evento>/, lugar_del_evento)
   end
+
+  def reemplazar_fecha_evento(template, fecha_del_evento)
+    template.gsub(/<fecha_del_evento>/, fecha_del_evento)
+  end	
 end
