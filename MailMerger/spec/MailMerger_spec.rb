@@ -63,5 +63,14 @@ describe 'MailMerger' do
     expect(cuerpo_del_mail.include?'enviando un mail a fiesta@untref.com').to be_truthy
   end
 
+  it 'El MailMerger deberia devolverme el cuerpo del mail para mandarselo a Juan' do
+    cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json, nombre_contacto)
+    expect(cuerpo_del_mail.include?'Hola Juan').to be_truthy
+    expect(cuerpo_del_mail.include?'invitando a la cena de fin de año de la UNTREF').to be_truthy
+    expect(cuerpo_del_mail.include?'en el Centro de estudios (avenida Directorio 887, Caseros)').to be_truthy
+    expect(cuerpo_del_mail.include?'el día 5 de diciembre').to be_truthy
+    expect(cuerpo_del_mail.include?'enviando un mail a fiesta@untref.com').to be_truthy
+  end 
+
 end
  
