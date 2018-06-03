@@ -36,6 +36,7 @@ describe 'MailMerger' do
   nombre_evento = data_json['datos']['nombre_evento']
   lugar_evento = data_json['datos']['lugar_evento']
   fecha_evento = data_json['datos']['fecha_del_evento']
+  mail_de_confirmacion = data_json['datos']['Mail_de_confirmacion']
 
   it 'El MailMerger deberia devolverme el cuerpo del mail con el nombre reemplazado' do
     cuerpo_del_mail = mailMerger.reemplazar_nombre(template, nombre_contacto)
@@ -55,6 +56,11 @@ describe 'MailMerger' do
   it 'El MailMerger deberia devolverme el cuerpo del mail con la fecha del evento reemplazado' do
     cuerpo_del_mail = mailMerger.reemplazar_fecha_evento(template, fecha_evento)
     expect(cuerpo_del_mail.include?'el día 5 de diciembre').to be_truthy
+  end
+
+  it 'El MailMerger deberia devolverme el cuerpo del mail con el mail de confirmacion reemplazado' do
+    cuerpo_del_mail = mailMerger.reemplazar_mail_de_confirmacion(template, mail_de_confirmacion)
+    expect(cuerpo_del_mail.include?'enviando un mail a fiesta@untref.com').to be_truthy
   end
 
 end

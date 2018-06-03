@@ -15,4 +15,8 @@ class MailMerger
   def reemplazar_fecha_evento(template, fecha_del_evento)
     template.gsub(/<fecha_del_evento>/, fecha_del_evento)
   end	
+  
+  def reemplazar_mail_de_confirmacion(template, mail_de_confirmacion)
+    template.gsub(/<mail_de_confirmacion>/, mail_de_confirmacion)
+  end
 end
