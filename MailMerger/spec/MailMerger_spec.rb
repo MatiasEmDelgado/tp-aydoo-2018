@@ -6,6 +6,7 @@ require 'json'
 describe 'MailMerger' do
 
   let(:mailMerger) { MailMerger.new }
+
   data = {
       "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>, el día <fecha_del_evento>. Por favor confirmar su participación enviando un mail a <mail_de_confirmacion>.\n\rSin otro particular.La direccion",
       "contactos":[
@@ -28,13 +29,21 @@ describe 'MailMerger' do
          "Mail_de_confirmacion":"fiesta@untref.com"
       }
     }
+
   data_json = JSON.parse(data.to_json)
   template = data_json['template']
   nombre_contacto = data_json['contactos'][0]['nombre']
+  nombre_evento = data_json['datos']['nombre_evento']
 
   it 'El MailMerger deberia devolverme el cuerpo del mail con el nombre reemplazado' do
     cuerpo_del_mail = mailMerger.reemplazar_nombre(template, nombre_contacto)
     expect(cuerpo_del_mail.include?'Hola juan').to be_truthy
+  end
+
+  it 'El MailMerger deberia devolverme el cuerpo del mail con el nombre de evento reemplazado' do
+    cuerpo_del_mail = mailMerger.reemplazar_nombre_evento(template, nombre_evento)
+    puts cuerpo_del_mail
+    expect(cuerpo_del_mail.include?'invitando a la cena de fin de año de la UNTREF').to be_truthy
   end
 
 end
