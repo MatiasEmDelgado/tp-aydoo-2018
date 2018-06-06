@@ -4,7 +4,18 @@ require 'sinatra'
 require 'sinatra/json'
 require 'json'
 
-post '/mail' do
+post '/mailTest' do
+  content_type :json	
+  json = JSON.parse(request.body.read)
+  origen = json['datos']['remitente']
+  asunto = json['datos']['asunto']
+  contactos = json['contactos']
+
+  status 200
+  body({"resultado": "ok"}.to_json)
+end
+
+post '/enviarMail' do
   content_type :json	
   json = JSON.parse(request.body.read)
   origen = json['datos']['remitente']

@@ -17,9 +17,9 @@ describe 'Aplicacion Sinatra' do
   parametros = File.read('spec/data1.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = parametros.to_json
-  describe '/mail' do
-    it 'Deberia sarasa' do
-      post '/mail', parametros, h
+  describe '/mailTest' do
+    it 'Deberia simular el envio de un mail' do
+      post '/mailTest', parametros, h
       cuerpo_parseado = JSON.parse(last_response.body)
       expect(last_response).to be_ok
       expect(cuerpo_parseado['resultado']).to eq 'ok'
