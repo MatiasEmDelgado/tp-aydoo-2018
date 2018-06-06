@@ -11,8 +11,6 @@ gem 'rb-readline'
 gem 'sinatra'
 gem 'sinatra-contrib'
 
-gem 'mail'
-
 gem 'byebug'
 
 group :test do
