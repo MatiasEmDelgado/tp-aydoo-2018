@@ -9,7 +9,7 @@ class MailSender
     
     Mail.deliver do
       from     origen
-      to       'matias.untref@gmail.com'
+      to       destino
       subject  asunto
       body     cuerpo
     end
