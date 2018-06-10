@@ -1,7 +1,7 @@
 require_relative './Contacto'
 require 'json'
 
-class EMail
+class Mail_
   
   attr_accessor :origen, :asunto, :contactos
 

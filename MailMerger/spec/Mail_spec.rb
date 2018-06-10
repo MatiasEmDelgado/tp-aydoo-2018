@@ -1,7 +1,7 @@
 require 'rspec'
 require 'rack/test'
 require 'json'
-require_relative '../model/EMail'
+require_relative '../model/Mail'
 
 describe 'mail' do
   parametros = File.read('spec/data1.json')
