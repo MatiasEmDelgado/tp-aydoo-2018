@@ -1,6 +1,5 @@
 require 'mail'
 
-
 class MailSender
 
 	options = { :address              => "localhost",
@@ -11,13 +10,11 @@ class MailSender
 	            :authentication       => 'plain',
 	            :enable_starttls_auto => true  }
 
-
-
 	Mail.defaults do
 	  delivery_method :smtp, options
 	end
 
-	Mail.deliver do
+	Mail.deliver do 
 	       to 'their@email.com'
 	     from 'your@email.com'
 	  subject 'test email'
