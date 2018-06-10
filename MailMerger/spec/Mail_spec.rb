@@ -7,7 +7,7 @@ describe 'mail' do
   parametros = File.read('spec/data1.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = parametros.to_json
-  let(:mail) { EMail.new(parametros) }  
+  let(:mail) { Mail_.new(parametros) }  
    
   it 'Al pedirle el origen al mail deberia devolverme el valor universidad@untref.com' do
     expect(mail.origen).to eq ('universidad@untref.com')
