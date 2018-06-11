@@ -38,4 +38,11 @@ describe 'tag_factory' do
     expect(tag.valor).to eq '11-06-2018'
   end
 
+  it 'Al pedirle crear un tags <sum(monto1, monto2)> al factory deberia devolverme un tag con el valor de la suma' do
+    tag = TagFactory.get_tag_instance('<sum(monto1, monto2)>', parametros)
+    expect(tag.valor).to eq '900'
+  end
+
+  
+
 end
