@@ -1,0 +1,19 @@
+{
+    "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <empty(pais,argentina)>, el día <fecha_del_evento>. Por favor confirmar su participación enviando un mail a <mail_de_confirmacion>.\n\rSin otro particular.La direccion",
+    "contactos":[
+       {
+          "nombre":"Matu",
+          "apellido":"Amigo",
+          "mail":"matuchin@amigo.com"
+       }
+    ],
+    "datos":{
+       "remitente": "aydoo@untref.com",
+       "asunto":"Invitación al mundial",
+       "nombre_evento":"la copa del mundo",
+       "lugar_del_evento":"en la esquina",
+       "fecha_del_evento":"16 de Junio",
+       "pais":"Jamaica",
+       "mail_de_confirmacion":"fifa@fifa.com"
+    }
+ }
