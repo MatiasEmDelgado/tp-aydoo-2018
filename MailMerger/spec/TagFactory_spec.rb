@@ -43,6 +43,4 @@ describe 'tag_factory' do
     expect(tag.valor).to eq '900'
   end
 
-  
-
 end

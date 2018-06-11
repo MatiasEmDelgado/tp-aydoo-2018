@@ -5,7 +5,8 @@ class TagFactory
    	 json = JSON.parse(json)
    	 datos = json['datos']
    	 datos = JSON.parse(datos.to_json)
-   	 contactos = json['contactos'].to_json
+   	 contactos = json['contactos']
+   	 contactos = JSON.parse(contactos.to_json)
    	 
      if (nombre_del_tag.include? 'pais')
        valor_tag = datos[nombre_del_tag]
@@ -41,10 +42,13 @@ class TagFactory
 
       	 valor_dos = datos[valor_dos].to_i
       	 valor_tag = valor_uno + valor_dos
-     	 Tag.new(nombre_del_tag, valor_tag.to_s) 
+     	 Tag.new(nombre_del_tag, valor_tag.to_s)
+     elsif ((nombre_del_tag.include? '<nombre>') || (nombre_del_tag.include? '<apellido>'))
+        valor_tag = "nombre"
+      	Tag.new(nombre_del_tag, valor_tag)    			
      else
-       Tag.new(nombre_del_tag, "sarasa")
+        valor_tag = datos[nombre_del_tag]
+        Tag.new(nombre_del_tag, valor_tag)
      end
-
   end
 end

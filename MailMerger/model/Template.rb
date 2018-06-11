@@ -13,10 +13,14 @@ class Template
     palabras_en_el_template = json.to_s.split(' ')
      
     palabras_en_el_template.each do |palabra|
-    	if(palabra.include? '<')
-    	  nombre_del_tag = palabra[1, palabra.index('>')-1]
-        @tags << Tag.new(nombre_del_tag, "hola")
-      end
+      if(palabra.include? '<')
+        nombre_del_tag = palabra[1, palabra.index('>')-1]
+        @tags << TagFactory.get_tag_instance(nombre_del_tag, json.to_json)
+      end  
+    	#if(palabra.include? '<')
+    	 # nombre_del_tag = palabra[1, palabra.index('>')-1]
+       # @tags << Tag.new(nombre_del_tag, "hola")
+      #end
     end  
   end
 
