@@ -24,7 +24,7 @@ post '/enviarMail' do
   
   mail.contactos.each do |contacto|
     cuerpo = MailMerger.new.obtener_cuerpo_del_mail(json, contacto.nombre)
-    MailSender.new.enviar_mail(mail.origen.to_s, contacto.mail.to_s, mail.asunto.to_s, cuerpo.to_s)
+    MailSender.new.enviar_mail(mail.origen, contacto.mail, mail.asunto, cuerpo)
   end
   status 200
   body({"resultado": "ok"}.to_json)
