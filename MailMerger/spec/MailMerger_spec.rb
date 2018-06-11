@@ -27,15 +27,15 @@ describe 'MailMerger' do
     expect(cuerpo_del_mail.include?'enviando un mail a fiesta@untref.com').to be_truthy
   end
 
-  #it 'El MailMerger deberia devolverme el cuerpo del segundo mail para mandarselo a Matu con el pais reemplazado' do
+  it 'El MailMerger deberia devolverme el cuerpo del segundo mail para mandarselo a Matu con el pais reemplazado' do
 
-#    cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json_con_pais, nombre_contacto_con_pais)
- #   expect(cuerpo_del_mail.include?'Hola Matu').to be_truthy
-  #  expect(cuerpo_del_mail.include?'invitando a la copa del mundo').to be_truthy
-   # expect(cuerpo_del_mail.include?'en Jamaica').to be_truthy
-   # expect(cuerpo_del_mail.include?'el día 16 de Junio').to be_truthy
-   # expect(cuerpo_del_mail.include?'enviando un mail a fifa@fifa.com').to be_truthy
-  #end
+    cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json_con_pais, nombre_contacto_con_pais)
+    expect(cuerpo_del_mail.include?'Hola Matu').to be_truthy
+    expect(cuerpo_del_mail.include?'invitando a la copa del mundo').to be_truthy
+    expect(cuerpo_del_mail.include?'en Jamaica').to be_truthy
+    expect(cuerpo_del_mail.include?'el día 16 de Junio').to be_truthy
+    expect(cuerpo_del_mail.include?'enviando un mail a fifa@fifa.com').to be_truthy
+  end
 
 end
  
