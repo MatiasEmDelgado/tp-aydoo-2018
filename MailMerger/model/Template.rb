@@ -1,9 +1,12 @@
+require_relative '../model/Tag'
+
 class Template
   
-  attr_accessor :tags
+  attr_accessor :tags, :cuerpo
 
   def initialize(json)
     json = JSON.parse(json)
+    @cuerpo = json['template'].to_s
     @tags = []
     palabras_en_el_template = json.to_s.split(' ')
      
