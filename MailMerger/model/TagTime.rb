@@ -7,6 +7,6 @@ class TagTime < Tag
     else
       valor_tag = Time.now.strftime('%H:%M')
     end
-    super(nombre_del_tag, valor_tag.capitalize)
+    super(nombre_del_tag, valor_tag)
   end
 end
