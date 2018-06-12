@@ -45,7 +45,7 @@ describe 'MailMerger' do
   it 'El MailMerger deberia devolverme el cuerpo del segundo mail para mandarselo a Matu con el pais reemplazado' do
 
     cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json_con_pais, contacto_con_pais)
-    expect(cuerpo_del_mail.include?'Hola Matu').to be_truthy
+    expect(cuerpo_del_mail.include?'Hola Matu Amigo').to be_truthy
     expect(cuerpo_del_mail.include?'invitando a la copa del mundo').to be_truthy
     expect(cuerpo_del_mail.include?'en Jamaica').to be_truthy
     expect(cuerpo_del_mail.include?'el día 16 de Junio').to be_truthy

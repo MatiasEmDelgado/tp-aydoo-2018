@@ -8,7 +8,7 @@ class MailMerger
     reemplazar_nombre(template, contacto.nombre)
     reemplazar_apellido(template, contacto.apellido)
     template.tags.each do |tag|
-      if(tag.nombre != "nombre")
+      if(tag.nombre != 'nombre' && tag.nombre != 'apellido')
         reemplazar_tag(tag, template)
       end
     end
