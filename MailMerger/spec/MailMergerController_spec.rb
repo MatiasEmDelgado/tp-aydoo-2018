@@ -17,14 +17,26 @@ describe 'Aplicacion Sinatra' do
   parametros = File.read('spec/data1.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = parametros.to_json
-  describe '/mailTest' do
+
+  parametros_invalidos = File.read('spec/data2_esquema_incorrecto.json')
+  parametros_invalidos = JSON.parse(parametros_invalidos.to_s)
+  parametros_invalidos = parametros_invalidos.to_json
+
+  describe '/enviarMail' do
     it 'Deberia simular el envio de un mail' do
-      post '/mailTest', parametros, h
+      MailSender.any_instance.stub(:enviar_mail)
+      post '/enviarMail', parametros, h
       cuerpo_parseado = JSON.parse(last_response.body)
       expect(last_response).to be_ok
       expect(cuerpo_parseado['resultado']).to eq 'ok'
-
     end
   end                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-
+  
+  it 'Deberia simular el envio de un mail con formato invalido' do
+    MailSender.any_instance.stub(:enviar_mail)
+    post '/enviarMail', parametros_invalidos, h
+    cuerpo_parseado = JSON.parse(last_response.body)
+    expect(last_response).not_to be_ok
+    expect(cuerpo_parseado['resultado']).to eq 'entrada incorrecta'
+  end
 end
