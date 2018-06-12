@@ -4,10 +4,22 @@ require 'json'
 require_relative '../model/Mail'
 
 describe 'mail' do
+
   parametros = File.read('spec/data1.json')
   parametros = JSON.parse(parametros.to_s)
-  parametros = parametros.to_json
-  let(:mail) { Mail_.new(parametros) }  
+  parametros = JSON.parse(parametros.to_json)
+
+  origen = parametros['datos']['remitente']
+  asunto = parametros['datos']['asunto']
+
+  nombre_contacto = parametros['contactos'][0]['nombre']
+  apellido_contacto = parametros['contactos'][0]['apellido']
+  direccion_mail = parametros['contactos'][0]['mail']
+  contacto = Contacto.new(nombre_contacto.capitalize, apellido_contacto.capitalize, direccion_mail)
+
+  cuerpo = MailMerger.new.obtener_cuerpo_del_mail(parametros, contacto)
+
+  let(:mail) { Mail_.new(origen, asunto, contacto, cuerpo) }  
    
   it 'Al pedirle el origen al mail deberia devolverme el valor universidad@untref.com' do
     expect(mail.origen).to eq ('universidad@untref.com')
@@ -17,16 +29,12 @@ describe 'mail' do
     expect(mail.asunto).to eq ('Invitación a fiesta de fin de año')
   end
 
-  it 'Al pedirle los contactos al mail deberia devolverme un array con dos valores' do
-    expect(mail.contactos.length ).to eq 2
+  it 'Al pedirle el contacto al mail deberia devolverme un contacto llamado Juan' do
+    expect(mail.contacto.nombre ).to eq 'Juan'
   end
 
-  it 'Al pedirle el primer contacto al mail deberia devolverme a Juan' do
-    expect(mail.contactos[0].nombre ).to eq "Juan"
-  end
-
-  it 'Al pedirle el segundo contacto al mail deberia devolverme a Maria' do
-    expect(mail.contactos[1].nombre ).to eq "Maria"
+  it 'Al pedirle el cuerpo del mail al mail deberia contener el texto Hola Juan' do
+    expect(mail.cuerpo.include? "Hola Juan").to be_truthy
   end
 
 end

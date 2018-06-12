@@ -27,13 +27,13 @@ post '/enviarMail' do
     asunto = json['datos']['asunto']
     
     contactos_en_el_json.each do |contacto|
-      
+
       nombre_contacto = JSON.parse(contacto.to_json)['nombre']
       apellido_contacto = JSON.parse(contacto.to_json)['apellido']
       direccion_mail = JSON.parse(contacto.to_json)['mail']
       contacto_actual = Contacto.new(nombre_contacto.capitalize, apellido_contacto.capitalize, direccion_mail)
 
-      cuerpo = MailMerger.new.obtener_cuerpo_del_mail(json, contacto_actual.nombre)
+      cuerpo = MailMerger.new.obtener_cuerpo_del_mail(json, contacto_actual)
 
       mail = Mail_.new(origen, asunto, contacto_actual, cuerpo)
 

@@ -3,10 +3,10 @@ require 'json'
 
 class MailMerger
 
-  def obtener_cuerpo_del_mail(json, nombre_contacto)
+  def obtener_cuerpo_del_mail(json, contacto)
     template = Template.new(json.to_json)
-    reemplazar_nombre(template, nombre_contacto)
-  
+    reemplazar_nombre(template, contacto.nombre)
+    reemplazar_apellido(template, contacto.apellido)
     template.tags.each do |tag|
       if(tag.nombre != "nombre")
         reemplazar_tag(tag, template)
@@ -24,4 +24,9 @@ class MailMerger
     template.cuerpo = template.cuerpo.gsub(/<nombre>/, nombre_contacto.capitalize)
   end
 
+  def reemplazar_apellido(template, apellido_contacto)
+    template.cuerpo = template.cuerpo.gsub(/<apellido>/, apellido_contacto.capitalize)
+  end
+
 end
+

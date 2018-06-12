@@ -13,16 +13,20 @@ describe 'MailSender' do
   data_json = JSON.parse(data.to_json)
 
   nombre_contacto = data_json['contactos'][0]['nombre']
-  cuerpo = MailMerger.new.obtener_cuerpo_del_mail(data_json, nombre_contacto)
+  apellido_contacto = data_json['contactos'][0]['apellido']
+  direccion_mail = data_json['contactos'][0]['mail']
+  contacto = Contacto.new(nombre_contacto.capitalize, apellido_contacto.capitalize, direccion_mail)
+
+  cuerpo = MailMerger.new.obtener_cuerpo_del_mail(data_json, contacto)
   origen = data_json['datos']['remitente']
-  destino = data_json['contactos'][0]['mail']
   asunto = data_json['datos']['asunto']
+  mail = Mail_.new(origen, asunto, contacto, cuerpo)
   
   it 'El Mailsender mockeado deberia enviar el mail con el origen, destino, asunto y cuerpo correctos' do
     mailSender = double
     allow(mailSender).to receive(:enviar_mail)
-    expect(mailSender).to receive(:enviar_mail).with(origen, destino, asunto, cuerpo)
-    mailSender.enviar_mail(origen, destino, asunto, cuerpo)
+    expect(mailSender).to receive(:enviar_mail).with(mail)
+    mailSender.enviar_mail(mail)
   end
 
   
