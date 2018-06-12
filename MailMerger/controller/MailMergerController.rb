@@ -17,15 +17,33 @@ post '/mailTest' do
 end
 
 post '/enviarMail' do
+  begin
+    content_type :json
+    json = JSON.parse(request.body.read)
 
-  content_type :json
-  json = JSON.parse(request.body.read)
-  mail = Mail_.new(json.to_json)
-  
-  mail.contactos.each do |contacto|
-    cuerpo = MailMerger.new.obtener_cuerpo_del_mail(json, contacto.nombre)
-    MailSender.new.enviar_mail(mail.origen.to_s, contacto.mail.to_s, mail.asunto.to_s, cuerpo.to_s)
+
+    contactos_en_el_json = json['contactos']
+    origen = json['datos']['remitente']
+    asunto = json['datos']['asunto']
+    
+    contactos_en_el_json.each do |contacto|
+
+      nombre_contacto = JSON.parse(contacto.to_json)['nombre']
+      apellido_contacto = JSON.parse(contacto.to_json)['apellido']
+      direccion_mail = JSON.parse(contacto.to_json)['mail']
+      contacto_actual = Contacto.new(nombre_contacto.capitalize, apellido_contacto.capitalize, direccion_mail)
+
+      cuerpo = MailMerger.new.obtener_cuerpo_del_mail(json, contacto_actual)
+
+      mail = Mail_.new(origen, asunto, contacto_actual, cuerpo)
+
+      MailSender.new.enviar_mail(mail)
+
+    end
+    status 200
+    body({"resultado": "ok"}.to_json)
+  rescue
+    status 500
+    {"resultado" => "entrada incorrecta"}.to_json
   end
-  status 200
-  body({"resultado": "ok"}.to_json)
 end
