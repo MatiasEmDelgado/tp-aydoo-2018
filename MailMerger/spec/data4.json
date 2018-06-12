@@ -1,5 +1,5 @@
 {
-    "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que intentaste evadir en <empty(pais,argentina)>, el monto es de <sum(monto1, monto2)>, <monto2> por el impuesto y <monto1> por intentar evadirlo, tenes plazo hasta el día <fecha_de_vencimiento> para pagarlo. Este mail fue enviado el <date:d>.\n\rSin otro particular.La embajada <pais>",
+    "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que intentaste evadir en <empty(pais,argentina)>, el monto es de <sum(monto1, monto2)>, <monto2> por el impuesto y <monto1> por intentar evadirlo, tenes plazo hasta el día <fecha_de_vencimiento> para pagarlo. Este mail fue enviado el <date:d> a las <time:12>.\n\rSin otro particular.La embajada <pais>",
     "contactos":[
        {
           "nombre":"chaval",

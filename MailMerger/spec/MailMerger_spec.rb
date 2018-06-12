@@ -43,12 +43,13 @@ describe 'MailMerger' do
   end
 
   it 'El MailMerger deberia devolverme el cuerpo del segundo mail para mandarselo a un chaval que evadio impuestos' do
-
+    string_con_hora_actual = 'a las ' + Time.now.strftime('%I:%M%p')
     cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json_fraude, nombre_contacto_con_denuncia)
     expect(cuerpo_del_mail.include?'Hola Chaval').to be_truthy
     expect(cuerpo_del_mail.include?'invitando a pagar').to be_truthy
     expect(cuerpo_del_mail.include?'en Argelia').to be_truthy
     expect(cuerpo_del_mail.include?'el día 5 de diciembre').to be_truthy
+    expect(cuerpo_del_mail.include? string_con_hora_actual).to be_truthy
     
   end
 
