@@ -45,11 +45,10 @@ describe 'MailMerger' do
   it 'El MailMerger deberia devolverme el cuerpo del segundo mail para mandarselo a un chaval que evadio impuestos' do
 
     cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json_fraude, nombre_contacto_con_denuncia)
-    puts cuerpo_del_mail
     expect(cuerpo_del_mail.include?'Hola Chaval').to be_truthy
     expect(cuerpo_del_mail.include?'invitando a pagar').to be_truthy
-    expect(cuerpo_del_mail.include?'en Argentina').to be_truthy
-    expect(cuerpo_del_mail.include?'el día 5 de Diciembre').to be_truthy
+    expect(cuerpo_del_mail.include?'en Argelia').to be_truthy
+    expect(cuerpo_del_mail.include?'el día 5 de diciembre').to be_truthy
     
   end
 
