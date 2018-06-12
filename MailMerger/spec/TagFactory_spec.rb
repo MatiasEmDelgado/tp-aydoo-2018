@@ -30,12 +30,12 @@ describe 'tag_factory' do
 
   it 'Al pedirle crear un tags date:i al factory deberia devolverme un tag con el valor correspondiente' do
     tag = TagFactory.get_tag_instance('<date:i>', parametros_con_date)
-    expect(tag.valor).to eq '2018-06-11'
+    expect(tag.valor).to eq Date.today.strftime('%Y-%m-%d')
   end
 
   it 'Al pedirle crear un tags date:d al factory deberia devolverme un tag con el valor correspondiente' do
     tag = TagFactory.get_tag_instance('<date:d>', parametros_con_date)
-    expect(tag.valor).to eq '11-06-2018'
+    expect(tag.valor).to eq Date.today.strftime('%d-%m-%Y')
   end
 
   it 'Al pedirle crear un tags <sum(monto1, monto2)> al factory deberia devolverme un tag con el valor de la suma' do

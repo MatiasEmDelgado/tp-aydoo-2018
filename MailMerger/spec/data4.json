@@ -8,6 +8,7 @@
        }
     ],
     "datos":{
+       "remitente": "embajada@argelia.com",
        "asunto":"Sobre sus impuestos",
        "nombre_evento":"pagar tus impuestos",
        "pais": "Argelia",

@@ -7,4 +7,3 @@ class Tag
     @valor = valor
   end
 end
-
