@@ -1,0 +1,23 @@
+{
+    "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>, el día <fecha_del_evento>.Este mail se envio el <date:i> o lo que es igual <date:d> .\n\rSin otro particular.La direccion",
+    "contactos":[
+       {
+          "nombre":"juan",
+          "apellido":"perez",
+          "mail":"juanperez@test.com"
+       },
+       {
+          "nombre":"maria",
+          "apellido":"gonzalez",
+          "mail":"mariagonzalez@test.com"
+       }
+    ],
+    "datos":{
+       "asunto":"Invitación a fiesta de fin de año",
+       "pais": "uruguay",
+       "monto1":"3",
+       "monto2":"887",
+       "fecha_del_evento":"5 de diciembre",
+       "mail_de_confirmacion":"fiesta@untref.com"
+    }
+ }
