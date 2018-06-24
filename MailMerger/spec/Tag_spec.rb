@@ -9,4 +9,8 @@ describe 'tag' do
     expect(tag.nombre).to eq ('nombre')
   end 
 
+  it 'Al pedirle el valor al tag nombre deberia devolverme su valor' do
+    expect(tag.valor).to eq ('valor')
+  end 
+
 end

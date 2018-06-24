@@ -14,7 +14,7 @@ describe 'MailMerger' do
   apellido_contacto = data_json['contactos'][0]['apellido']
   direccion_mail = data_json['contactos'][0]['mail']
   contacto = Contacto.new(nombre_contacto.capitalize, apellido_contacto.capitalize, direccion_mail)
-puts data_json
+
   data_con_pais = File.read('./json_de_ejemplos/data3.json')
   data_con_pais = JSON.parse(data_con_pais.to_s)
   data_json_con_pais = JSON.parse(data_con_pais.to_json)
@@ -30,6 +30,14 @@ puts data_json
  apellido_contacto_con_denuncia = data_json_fraude['contactos'][0]['apellido']
  direccion_mail_contacto_con_denuncia = data_json_fraude['contactos'][0]['mail']
  contacto_con_denuncia = Contacto.new(nombre_contacto_con_denuncia.capitalize, apellido_contacto_con_denuncia.capitalize, direccion_mail_contacto_con_denuncia)
+
+ data_suma = File.read('./json_de_ejemplos/data8.json')
+ data_suma = JSON.parse(data_suma.to_s)
+ data_json_suma = JSON.parse(data_suma.to_json)
+ nombre_contacto_con_suma = data_json_suma['contactos'][0]['nombre']
+ apellido_contacto_con_suma = data_json_suma['contactos'][0]['apellido']
+ direccion_mail_contacto_con_suma = data_json_suma['contactos'][0]['mail']
+ contacto_con_suma = Contacto.new(nombre_contacto_con_suma.capitalize, apellido_contacto_con_suma.capitalize, direccion_mail_contacto_con_suma)
   
 
   it 'El MailMerger deberia devolverme el cuerpo del mail para mandarselo a Juan' do
@@ -59,8 +67,13 @@ puts data_json
     expect(cuerpo_del_mail.include?'invitando a pagar').to be_truthy
     expect(cuerpo_del_mail.include?'en Argelia').to be_truthy
     expect(cuerpo_del_mail.include?'el día 5 de diciembre').to be_truthy
-    expect(cuerpo_del_mail.include? string_con_hora_actual).to be_truthy
-    
+    expect(cuerpo_del_mail.include? string_con_hora_actual).to be_truthy    
+  end
+
+  it 'El MailMerger deberia devolverme el cuerpo mail con la etiqueta <sum(1,3)> sumada correctamente' do
+    cuerpo_del_mail = mailMerger.obtener_cuerpo_del_mail(data_json_suma, contacto_con_suma)
+    expect(cuerpo_del_mail.include?'Hola Juan').to be_truthy
+    expect(cuerpo_del_mail.include?'cuando sumo 1 y 3 obtengo  4').to be_truthy
   end
 
 end

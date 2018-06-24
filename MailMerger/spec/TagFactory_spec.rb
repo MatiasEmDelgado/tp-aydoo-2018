@@ -43,6 +43,11 @@ describe 'tag_factory' do
     expect(tag.valor).to eq '900'
   end
   
+it 'Al pedirle crear un tags <sum(4, 6)> al factory deberia devolverme un tag con el valor de la suma 4 + 6 = 10' do
+    tag = TagFactory.get_tag_instance('<sum(4, 6)>', parametros)
+    expect(tag.valor).to eq '10'
+  end
+
   it 'Al pedirle crear un tags <time:12> al factory deberia devolverme un tag con el valor de la hora actual en formato 12 horas' do
     tag = TagFactory.get_tag_instance('<time:12>', parametros)
     expect(tag.valor).to eq Time.now.strftime('%I:%M%p')
