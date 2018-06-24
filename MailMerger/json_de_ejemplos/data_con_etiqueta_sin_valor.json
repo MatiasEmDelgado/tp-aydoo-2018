@@ -1,0 +1,14 @@
+{
+    "template":"Hola <nombre>, esta etiqueta <etiqueta> no tiene valor, deberias lanzar una excepcion",
+    "contactos":[
+       {
+          "nombre":"juan",
+          "apellido":"perez",
+          "mail":"aydoo@mailinator.com"
+       }
+    ],
+    "datos":{
+       "remitente": "universidad@untref.com",
+       "asunto":"Ejemplo 8: Prueba suma"
+    }
+ }
