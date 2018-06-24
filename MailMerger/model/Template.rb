@@ -1,5 +1,5 @@
-require_relative '../model/Tag'
-require_relative '../model/TagFactory'
+require_relative 'Tag'
+require_relative 'TagFactory'
 
 class Template
   

@@ -1,4 +1,4 @@
-require_relative '../model/Tag'
+require_relative 'Tag'
 
 class TagPais < Tag  
   def initialize (nombre_del_tag, datos)

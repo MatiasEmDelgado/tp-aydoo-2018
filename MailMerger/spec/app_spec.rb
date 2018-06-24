@@ -1,4 +1,4 @@
-require_relative '../controller/MailMergerController'
+require_relative '../app'
 require 'rspec'
 require 'rack/test'
 require 'json'
@@ -14,11 +14,11 @@ describe 'Aplicacion Sinatra' do
   end
 
   h = {'Content-Type' => 'application/json'}
-  parametros = File.read('spec/data1.json')
+  parametros = File.read('./json_de_ejemplos/data1.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = parametros.to_json
 
-  parametros_invalidos = File.read('spec/data2_esquema_incorrecto.json')
+  parametros_invalidos = File.read('./json_de_ejemplos/data2_esquema_incorrecto.json')
   parametros_invalidos = JSON.parse(parametros_invalidos.to_s)
   parametros_invalidos = parametros_invalidos.to_json
 

@@ -1,6 +1,7 @@
 require 'rspec' 
 require_relative '../model/MailSender'
 require_relative '../model/MailMerger'
+require_relative '../model/Mail'
 require 'rack/test'
 require 'json'
 
@@ -8,7 +9,7 @@ describe 'MailSender' do
 
   let(:mailSender) { MailSender.new }
 
-  data = File.read('spec/data1.json')
+  data = File.read('./json_de_ejemplos/data1.json')
   data = JSON.parse(data.to_s)
   data_json = JSON.parse(data.to_json)
 

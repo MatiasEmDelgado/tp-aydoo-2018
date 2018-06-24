@@ -5,7 +5,7 @@ require_relative '../model/Mail'
 
 describe 'mail' do
 
-  parametros = File.read('spec/data1.json')
+  parametros = File.read('./json_de_ejemplos/data1.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = JSON.parse(parametros.to_json)
 

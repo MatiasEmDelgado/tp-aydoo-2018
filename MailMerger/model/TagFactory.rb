@@ -1,8 +1,8 @@
-require_relative '../model/Tag'
-require_relative '../model/TagPais'
-require_relative '../model/TagSuma'
-require_relative '../model/TagDate'
-require_relative '../model/TagTime'
+require_relative 'Tag'
+require_relative 'TagPais'
+require_relative 'TagSuma'
+require_relative 'TagDate'
+require_relative 'TagTime'
 
 class TagFactory
    def self.get_tag_instance(nombre_del_tag, json)

@@ -6,15 +6,15 @@ require_relative '../model/Tag'
 
 describe 'tag_factory' do
 
-  parametros = File.read('spec/etiquetas_especiales.json')
+  parametros = File.read('./json_de_ejemplos/etiquetas_especiales.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = parametros.to_json
 
-  parametros_con_pais = File.read('spec/etiquetas_especiales_con_pais.json')
+  parametros_con_pais = File.read('./json_de_ejemplos/etiquetas_especiales_con_pais.json')
   parametros_con_pais = JSON.parse(parametros_con_pais.to_s)
   parametros_con_pais = parametros_con_pais.to_json
 
-  parametros_con_date = File.read('spec/etiquetas_especiales_con_date.json')
+  parametros_con_date = File.read('./json_de_ejemplos/etiquetas_especiales_con_date.json')
   parametros_con_date = JSON.parse(parametros_con_date.to_s)
   parametros_con_date = parametros_con_date.to_json
    

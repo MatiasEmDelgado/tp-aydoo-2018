@@ -5,7 +5,7 @@ require_relative '../model/Template'
 
 describe 'template' do
 
-  parametros = File.read('spec/data1.json')
+  parametros = File.read('./json_de_ejemplos/data1.json')
   parametros = JSON.parse(parametros.to_s)
   parametros = parametros.to_json
   let(:template) { Template.new(parametros) }  

@@ -7,15 +7,15 @@ describe 'MailMerger' do
 
   let(:mailMerger) { MailMerger.new }
   
-  data = File.read('spec/data1.json')
+  data = File.read('./json_de_ejemplos/data1.json')
   data = JSON.parse(data.to_s)
   data_json = JSON.parse(data.to_json)
   nombre_contacto = data_json['contactos'][0]['nombre']
   apellido_contacto = data_json['contactos'][0]['apellido']
   direccion_mail = data_json['contactos'][0]['mail']
   contacto = Contacto.new(nombre_contacto.capitalize, apellido_contacto.capitalize, direccion_mail)
-
-  data_con_pais = File.read('spec/data3.json')
+puts data_json
+  data_con_pais = File.read('./json_de_ejemplos/data3.json')
   data_con_pais = JSON.parse(data_con_pais.to_s)
   data_json_con_pais = JSON.parse(data_con_pais.to_json)
   nombre_contacto_con_pais = data_json_con_pais['contactos'][0]['nombre']
@@ -23,13 +23,13 @@ describe 'MailMerger' do
   direccion_mail_contacto_con_pais = data_json_con_pais['contactos'][0]['mail']
   contacto_con_pais = Contacto.new(nombre_contacto_con_pais.capitalize, apellido_contacto_con_pais.capitalize, direccion_mail_contacto_con_pais)
 
-  data_fraude = File.read('spec/data4.json')
-  data_fraude = JSON.parse(data_fraude.to_s)
-  data_json_fraude = JSON.parse(data_fraude.to_json)
-  nombre_contacto_con_denuncia = data_json_fraude['contactos'][0]['nombre']
-  apellido_contacto_con_denuncia = data_json_fraude['contactos'][0]['apellido']
-  direccion_mail_contacto_con_denuncia = data_json_fraude['contactos'][0]['mail']
-  contacto_con_denuncia = Contacto.new(nombre_contacto_con_denuncia.capitalize, apellido_contacto_con_denuncia.capitalize, direccion_mail_contacto_con_denuncia)
+ data_fraude = File.read('./json_de_ejemplos/data4.json')
+ data_fraude = JSON.parse(data_fraude.to_s)
+ data_json_fraude = JSON.parse(data_fraude.to_json)
+ nombre_contacto_con_denuncia = data_json_fraude['contactos'][0]['nombre']
+ apellido_contacto_con_denuncia = data_json_fraude['contactos'][0]['apellido']
+ direccion_mail_contacto_con_denuncia = data_json_fraude['contactos'][0]['mail']
+ contacto_con_denuncia = Contacto.new(nombre_contacto_con_denuncia.capitalize, apellido_contacto_con_denuncia.capitalize, direccion_mail_contacto_con_denuncia)
   
 
   it 'El MailMerger deberia devolverme el cuerpo del mail para mandarselo a Juan' do

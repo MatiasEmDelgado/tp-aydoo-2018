@@ -1,4 +1,4 @@
-require_relative '../model/Template'
+require_relative 'Template'
 require 'json'
 
 class MailMerger
@@ -29,4 +29,3 @@ class MailMerger
   end
 
 end
-

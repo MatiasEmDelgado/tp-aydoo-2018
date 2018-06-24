@@ -1,4 +1,4 @@
-require_relative './Contacto'
+require_relative 'Contacto'
 require 'json'
 
 class Mail_
