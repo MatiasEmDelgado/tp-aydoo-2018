@@ -1,12 +1,6 @@
 require_relative 'Template'
 require 'json'
 
-class TagException < StandardError
-  def initialize(msg)
-    super(msg)
-  end
-end
-
 class MailMerger
 
   def obtener_cuerpo_del_mail(json, contacto)
@@ -24,7 +18,7 @@ class MailMerger
   
   def reemplazar_tag(tag, template)
     begin
-      raise 'Usted no tiene un valor definido en su json para la etiqueta ' + tag.nombre unless tag.valor.nil?
+      raise 'Usted no tiene un valor definido en su json para la etiqueta ' + tag.nombre unless tag.valor != nil
       template.cuerpo = template.cuerpo.gsub(tag.clave, tag.valor)
     rescue Exception => e
       puts e.message
