@@ -40,5 +40,3 @@ class MailMerger
   end
 
 end
-tag.valor != nil
-'Usted no tiene un valor definido en su json para la etiqueta ' + tag.nombre
