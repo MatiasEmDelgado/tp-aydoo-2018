@@ -6,22 +6,17 @@ class Mail_
   attr_accessor :origen, :asunto, :contacto, :cuerpo
 
   def initialize(origen, asunto, contacto, cuerpo)
-  	if(origen.include? '@')
+    begin
+      raise 'El mail del remitente tiene un formato incorrecto' unless origen.include? '@'
+
 	    @origen = origen
 	    @asunto = asunto
 	    @contacto = contacto
 	    @cuerpo = cuerpo
-    else
-      error = MailException.new('El mail del remitente tiene un formato incorrecto')
-      puts error.message
-      raise error
+      
+    rescue Exception => e
+      puts e.message
     end
   end
 
-end
-
-class MailException < StandardError
-  def initialize(msg)
-    super(msg)
-  end
 end

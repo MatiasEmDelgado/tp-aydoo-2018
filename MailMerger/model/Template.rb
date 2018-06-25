@@ -7,7 +7,9 @@ class Template
 
   def initialize(json)
     json = JSON.parse(json)
-    if (!json['template'].to_s.empty?)
+    begin
+      raise 'El template del mail no puede estar vacio' unless !json['template'].to_s.empty?
+
       datos = json['datos'].to_s
       @cuerpo = json['template'].to_s
       @tags = []
@@ -19,17 +21,10 @@ class Template
           @tags << TagFactory.get_tag_instance(nombre_del_tag, json.to_json)
         end
       end 
-    else
-      error = TemplateException.new('El template del mail no puede estar vacio')
-      puts error.message
-      raise error
+
+    rescue Exception => e
+      puts e.message
     end
   end
 
-end
-
-class TemplateException < StandardError
-  def initialize(msg)
-    super(msg)
-  end
 end

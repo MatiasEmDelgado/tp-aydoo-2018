@@ -23,12 +23,11 @@ class MailMerger
   end
   
   def reemplazar_tag(tag, template)
-    if (tag.valor != nil)
+    begin
+      raise 'Usted no tiene un valor definido en su json para la etiqueta ' + tag.nombre unless tag.valor.nil?
       template.cuerpo = template.cuerpo.gsub(tag.clave, tag.valor)
-    else
-      error = TagException.new('Usted no tiene un valor definido en su json para la etiqueta ' + tag.nombre)
-      puts error.message
-      raise error
+    rescue Exception => e
+      puts e.message
     end
   end
 
@@ -41,3 +40,5 @@ class MailMerger
   end
 
 end
+tag.valor != nil
+'Usted no tiene un valor definido en su json para la etiqueta ' + tag.nombre
