@@ -37,4 +37,16 @@ describe 'mail' do
     expect(mail.cuerpo.include? "Hola Juan").to be_truthy
   end
 
+  it 'Al no pasarle parametros al mail deberia levantar una excepcion' do
+    expect{
+      let(:mail) { Mail_.new() }
+    }.to raise_error()
+  end
+
+  it 'Al pasarle como origen un mail invalido deberia levantar una excepcion' do
+    expect{
+      let(:mail) { Mail_.new('mail de origen invalido', asunto, contacto, cuerpo) }
+    }.to raise_error()
+  end
+
 end

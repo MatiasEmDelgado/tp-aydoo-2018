@@ -35,4 +35,36 @@ describe 'template' do
     expect(template.tags[4].nombre).to eq 'mail_de_confirmacion'
   end
 
+  it 'Al no pasarle parametros al template deberia levantar una excepcion' do
+    expect{
+      let(:template) { Template.new() }
+    }.to raise_error()
+  end
+
+  it 'Al no pasarle un template vacio deberia levantar una excepcion' do
+
+    json_template_vacio = {
+                            "template":"",
+                            "contactos":[
+                               {
+                                  "nombre":"Matu",
+                                  "apellido":"Amigo",
+                                  "mail":"mail@invavlido"
+                               }
+                            ],
+                            "datos":{
+                               "remitente": "aydoo@untref.com",
+                               "asunto":"Invitación al mundial",
+                               "nombre_evento":"la copa del mundo",
+                               "lugar_del_evento":"en la esquina",
+                               "fecha_del_evento":"16 de Junio",
+                               "pais":"Jamaica",
+                               "mail_de_confirmacion":"fifa@fifa.com"
+                            }
+                          }
+    expect{
+      let(:template) { Template.new(json_template_vacio) }
+    }.to raise_error()
+  end
+
 end
