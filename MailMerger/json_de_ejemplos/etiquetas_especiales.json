@@ -1,0 +1,26 @@
+{
+    "template":"Hola <nombre>,\n\r Por medio del presente mail te estamos invitando a <nombre_evento>, que se desarrollará en <lugar_del_evento>, el día <fecha_del_evento>. Por favor confirmar su participación enviando un mail a <mail_de_confirmacion>.\n\rSin otro particular.La direccion",
+    "contactos":[
+       {
+          "nombre":"juan",
+          "apellido":"perez",
+          "mail":"juanperez@test.com"
+       },
+       {
+          "nombre":"maria",
+          "apellido":"gonzalez",
+          "mail":"mariagonzalez@test.com"
+       }
+    ],
+    "datos":{
+       "remitente": "universidad@untref.com",
+       "asunto":"Invitación a fiesta de fin de año",
+       "pais": "",
+       "monto1":"13",
+       "monto2":"887",
+       "nombre_evento":"el final de la materia",
+       "lugar_del_evento":"Sede I Untref",
+       "fecha_del_evento":"5 de diciembre",
+       "mail_de_confirmacion":"fiesta@untref.com"
+    }
+ }

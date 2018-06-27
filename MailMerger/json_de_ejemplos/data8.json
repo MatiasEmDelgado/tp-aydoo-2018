@@ -1,0 +1,15 @@
+{
+    "template":"Hola <nombre>, cuando sumo 1 y 3 obtengo  <sum(1,3)>",
+    "contactos":[
+       {
+          "nombre":"juan",
+          "apellido":"perez",
+          "mail":"aydoo@mailinator.com"
+       }
+    ],
+    "datos":{
+       "remitente": "universidad@untref.com",
+       "asunto":"Ejemplo 8: Prueba suma"
+    }
+ }
+
